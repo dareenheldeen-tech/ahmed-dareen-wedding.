@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4b0712">
+<title>Ahmed &amp; Dareen — A Beautiful Coincidence</title>
+<style>
+:root{--wine:#4b0712;--wine2:#6b1020;--cream:#f4e4c8;--ink:#40101a;--blue:#263c5b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--wine);color:var(--cream);font-family:Georgia,'Times New Roman',serif}
+.hero{min-height:100svh;display:grid;place-items:center;padding:24px 16px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#751626 0,#4b0712 65%)}
+.rose{position:absolute;color:#8d2533;font-size:clamp(48px,10vw,100px);opacity:.55;filter:drop-shadow(0 8px 8px #190006)}.r1{top:2%;right:3%}.r2{bottom:3%;left:2%}
+.intro{text-align:center;max-width:760px;z-index:1}.eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:#e8cda7}
+.envelope{position:relative;width:min(88vw,540px);margin:24px auto 14px;cursor:pointer;perspective:1000px;outline:none}
+.envelope img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 24px 70px #16000699;transition:transform 1.1s cubic-bezier(.2,.8,.2,1),filter .6s}
+.envelope.open img{transform:scale(1.025) rotateX(2deg);filter:brightness(1.06)}
+.hint{color:#f0d9b9;font-size:14px;letter-spacing:.08em}.flash{position:fixed;inset:0;background:white;opacity:0;pointer-events:none;z-index:20}.flash.fire{animation:flash .55s ease-out}@keyframes flash{0%{opacity:0}12%{opacity:1}100%{opacity:0}}
+main{max-width:850px;margin:auto;padding:0 20px 80px}.paper{background:linear-gradient(135deg,#f7e9d1,#ead3ae);color:var(--ink);padding:clamp(28px,6vw,64px);margin:34px auto;border:8px double #263c5b;outline:1px solid #d9b98d;box-shadow:0 20px 60px #16000666;text-align:center}
+h1{font-weight:normal;font-size:clamp(42px,9vw,76px);font-style:italic;margin:8px 0;color:#641324}h2{font-weight:normal;font-style:italic;font-size:clamp(28px,6vw,42px);color:#641324;margin:0 0 18px}.sub{color:var(--blue);letter-spacing:.12em;font-size:clamp(13px,2vw,17px)}p{line-height:1.8;font-size:18px}.rule{width:90px;border:0;border-top:1px solid #9b6d68;margin:24px auto}
+.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin:28px 0}.detail{border-top:1px solid #b68f79;border-bottom:1px solid #b68f79;padding:16px 8px}.detail strong{display:block;color:#641324;font-size:20px;margin-bottom:7px}
+a.button{display:inline-block;background:#641324;color:#fff0d7;text-decoration:none;padding:14px 28px;margin:12px 6px;border-radius:2px;letter-spacing:.06em}
+.small{font-size:14px;color:#73545a}.footer{text-align:center;color:#e9c9a6;letter-spacing:.12em;font-size:13px}
+@media(max-width:480px){.paper{padding:26px 18px;margin:24px auto}.paper p{font-size:16px}.envelope{width:94vw}}
+</style>
+</head>
+<body>
+<div class="flash" id="flash"></div>
+<section class="hero">
+ <span class="rose r1">✿</span><span class="rose r2">✿</span>
+ <div class="intro">
+  <div class="eyebrow">A little story, sealed with love</div>
+  <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the wedding invitation">
+   <img src="couple-heart-invitation.jpg" alt="A heart-shaped illustration of Ahmed and Dareen as children, with a burgundy envelope and invitation">
+  </div>
+  <div class="hint" id="hint">TAP THE HEART TO OPEN YOUR INVITATION</div>
+ </div>
+</section>
+<main>
+ <section class="paper">
+  <div class="sub">A BEAUTIFUL COINCIDENCE</div>
+  <h1>Ahmed &amp; Dareen</h1>
+  <hr class="rule">
+  <h2>One unexpected meeting. One endless love. One forever.</h2>
+  <p>Some stories begin with a plan. Ours began with a coincidence.</p>
+  <p>Two paths crossed when neither of us expected it. A simple moment became a thousand little moments, and a chance meeting became the love we choose every day.</p>
+  <p>And now, we would love to celebrate the beginning of our forever with you.</p>
+ </section>
+ <section class="paper">
+  <div class="sub">SAVE THE DATE</div>
+  <h2>Our Wedding Day</h2>
+  <div class="details">
+   <div class="detail"><strong>Saturday</strong>December 26, 2026</div>
+   <div class="detail"><strong>7:00 PM – 11:00 PM</strong>Four hours of celebration</div>
+   <div class="detail"><strong>Al Fairouz Hall</strong>Dar El Mashah</div>
+  </div>
+  <a class="button" href="https://maps.app.goo.gl/4mhR4VKQHWPFoHv88?g_st=ac" target="_blank" rel="noopener">OPEN LOCATION ↗</a>
+  <hr class="rule">
+  <div class="sub">WE CAN'T WAIT TO SEE YOU</div>
+  <h2>Be Part of Our Story</h2>
+  <p>Your presence is the greatest gift. We can't wait to celebrate with you.</p>
+  <p class="small">A private wishes book will be added once secure couple-only access is connected. This page does not collect or publish guest messages.</p>
+ </section>
+ <div class="footer">WITH LOVE, AHMED &amp; DAREEN</div>
+</main>
+<script>
+const env=document.getElementById('envelope'), flash=document.getElementById('flash'), hint=document.getElementById('hint');
+let opened=false;
+function openInvite(){
+ if(opened)return; opened=true;
+ flash.classList.remove('fire'); void flash.offsetWidth; flash.classList.add('fire');
+ try{const C=window.AudioContext||window.webkitAudioContext;if(C){const c=new C(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(1250,c.currentTime);o.frequency.exponentialRampToValueAtTime(420,c.currentTime+.12);g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.18,c.currentTime+.015);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.18);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.19);}}
+ catch(e){}
+ env.classList.add('open');hint.textContent='YOUR INVITATION IS OPEN — SCROLL DOWN';
+ setTimeout(()=>document.querySelector('main').scrollIntoView({behavior:'smooth'}),850);
+}
+env.addEventListener('click',openInvite);env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openInvite();}});
+</script>
+</body></html>
