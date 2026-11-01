@@ -1,6 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <style>
+.story-reveal > *:not(.story-date) {
+  display: none !important;
+}
+
+.story-reveal {
+  max-height: 180px !important;
+  padding: 30px 20px !important;
+}
+
+.story-date::after {
+  content: "SAVE THE DATE";
+  display: block;
+  margin-top: 14px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #8d1725;
+}
+  </style>
+  <style>
+.story-reveal h2,
+.story-reveal p {
+  display: none !important;
+}
+
+.story-date::after {
+  content: "SAVE THE DATE";
+  display: block;
+  margin-top: 12px;
+  font: 600 18px Georgia, serif;
+  letter-spacing: 2px;
+  color: #8d1725;
+}
+
+.story-reveal.show {
+  max-height: 220px;
+}
+  </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#590b18">
